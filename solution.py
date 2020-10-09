@@ -1,27 +1,18 @@
-def minus(x, y, base):
-    r = [0] * len(x)
+def solution(x, y):
+    count = 0
+    x = int(x)
+    y = int(y)
+    while x > 0 and y > 0:
+        if x > y:
+            count += x // y
+            x %= y
+        else:
+            count += y // x
+            y %= x
 
-    for i in range(len(x)):
-        r[i] = x[i] - y[i]
-        j = i
-        while j > 0 and r[j] < 0:
-            r[j] += base
-            j -= 1
-            r[j] -= 1
-    return tuple(r)
-
-
-def solution(n, b):
-    n = [int(dgt) for dgt in n]
-    result = {tuple(n): 0}
-
-    i = 1
-    while True:
-        y = sorted(n)
-        x = y[::-1]
-        z = minus(x, y, b)
-        if z in result:
-            return i - result[z]
-        result[z] = i
-        n = z
-        i += 1
+    if x < 0 or y < 0:
+        return "impossible"
+    elif (x == 0 and y == 1) or (x == 1 and y == 0):
+        return str(count - 1)
+    else:
+        return "impossible"

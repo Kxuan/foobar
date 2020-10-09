@@ -1,4 +1,5 @@
 import solution
 
-print solution.solution('1211', 10)
-print solution.solution('210022', 3)
+print solution.solution('1', '3' * 49)
+print solution.solution('4', '7')
+print solution.solution('2', '1')
