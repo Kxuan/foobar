@@ -1,4 +1,3 @@
-
 class AllPathIsFree(RuntimeError):
     pass
 
@@ -111,7 +110,7 @@ class Graph:
     def go(self, time_limit):
         pickup = []
         if self.shortest_path[self.path.step[-1]][len(self.map) - 1].cost <= time_limit:
-            pickup = [i-1 for i in range(1, len(self.map) - 1) if self.candidates[i] > 0]
+            pickup = [i - 1 for i in range(1, len(self.map) - 1) if self.candidates[i] > 0]
 
         for i in range(1, len(self.candidates) - 1):
             if self.candidates[i] != 0:
@@ -157,7 +156,7 @@ def solution(times, time_limit):
     try:
         g = Graph(times)
     except AllPathIsFree:
-        return [s for s in range(1, len(times) - 1)]
+        return [s - 1 for s in range(1, len(times) - 1)]
 
     candidates = g.try_pickup(time_limit)
 
